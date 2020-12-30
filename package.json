@@ -1,0 +1,23 @@
+{
+  "name": "ohnaka0410-zenn-contents.git",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ohnaka0410@github.com/ohnaka0410/ohnaka0410-zenn-contents.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ohnaka0410/ohnaka0410-zenn-contents/issues"
+  },
+  "homepage": "https://github.com/ohnaka0410/ohnaka0410-zenn-contents#readme",
+  "devDependencies": {
+    "zenn-cli": "^0.1.66"
+  }
+}
