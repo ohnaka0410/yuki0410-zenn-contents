@@ -3,7 +3,7 @@ title: "【Kotlin】Androidアプリでボタン連打を抑止する方法（Da
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Android","Kotlin","DataBinding"]
-published: false
+published: true
 ---
 この記事は[Kotlin Advent Calendar 2020](https://qiita.com/advent-calendar/2020/kotlin)の5日目の記事です。
 Androidアプリ開発初心者ですが、空きがあったので勢いだけで参加してみました。(1日ぶり2回目)
