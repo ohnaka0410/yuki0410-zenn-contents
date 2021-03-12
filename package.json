@@ -1,5 +1,5 @@
 {
-  "name": "ohnaka0410-zenn-contents.git",
+  "name": "yuki0410-zenn-contents.git",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://ohnaka0410@github.com/ohnaka0410/ohnaka0410-zenn-contents.git"
+    "url": "git+https://ohnaka0410@github.com/ohnaka0410/yuki0410-zenn-contents.git"
   },
   "author": {
     "name": "ohnaka0410",
@@ -16,11 +16,11 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ohnaka0410/ohnaka0410-zenn-contents/issues"
+    "url": "https://github.com/ohnaka0410/yuki0410-zenn-contents/issues"
   },
-  "homepage": "https://github.com/ohnaka0410/ohnaka0410-zenn-contents#readme",
+  "homepage": "https://github.com/ohnaka0410/yuki0410-zenn-contents#readme",
   "devDependencies": {
-    "zenn-cli": "^0.1.66"
+    "zenn-cli": "^0.1.75"
   },
   "private": true
 }
