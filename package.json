@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/ohnaka0410/yuki0410-zenn-contents#readme",
   "devDependencies": {
-    "zenn-cli": "^0.1.79"
+    "zenn-cli": "^0.1.91"
   },
   "private": true
 }
