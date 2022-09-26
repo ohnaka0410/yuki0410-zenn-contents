@@ -3,7 +3,7 @@ title: "【React/TypeScript】Dialogタグを使ってコンポーネントを�
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["react", "typescript", "dialog", "modal"]
-published: false
+published: true
 ---
 
 ## はじめに
