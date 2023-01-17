@@ -4,6 +4,7 @@ emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["javascript", "typescript", "promise"]
 published: true
+publication_name: "no4_dev"
 ---
 
 Array.map で async/await を使う方法は調べるとすぐに出てきますが、Array.reduce で async/await を使う方法が調べても出てこなかったため、忘備録です。

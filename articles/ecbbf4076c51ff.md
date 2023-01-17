@@ -4,6 +4,7 @@ emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["react", "typescript", "dialog", "modal"]
 published: true
+publication_name: "no4_dev"
 ---
 
 ## はじめに

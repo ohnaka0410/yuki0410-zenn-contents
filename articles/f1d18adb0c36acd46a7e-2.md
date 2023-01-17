@@ -4,11 +4,14 @@ emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["CSS"]
 published: true
+publication_name: "no4_dev"
 ---
+
 モーダル表示時などに普通にアニメーションを設定しても反映されなかったので、その対応策です。
-実際の動作は、[ミニマルなモーダルライブラリをnpmで公開しました](https://zenn.dev/ohnaka0410/articles/1b2f04fa529ca373740d) のデモで使用していますのでご確認ください。
+実際の動作は、[ミニマルなモーダルライブラリを npm で公開しました](https://zenn.dev/ohnaka0410/articles/1b2f04fa529ca373740d) のデモで使用していますのでご確認ください。
 
 ## 表示アニメーションが効かないケース
+
 ```html:html
 <input type="checkbox" class="trigger">
 <div class="modal">
@@ -33,6 +36,7 @@ published: true
 ```
 
 ## 表示アニメーションが効くケース
+
 ```html:html
 同上
 ```
@@ -63,4 +67,5 @@ published: true
 ```
 
 ## 注意
-- 非表示は、アニメーションが実行される前に、display: none;になってしまうためアニメーションが効きません😇
+
+- 非表示は、アニメーションが実行される前に、display: none;になってしまうためアニメーションが効きません 😇

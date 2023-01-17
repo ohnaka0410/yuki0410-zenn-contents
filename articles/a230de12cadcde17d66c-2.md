@@ -2,20 +2,24 @@
 title: "【Kotlin】Androidアプリでボタン連打を抑止する方法（DataBinding編）"
 emoji: "📌"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["Android","Kotlin","DataBinding"]
+topics: ["Android", "Kotlin", "DataBinding"]
 published: true
+publication_name: "no4_dev"
 ---
-この記事は[Kotlin Advent Calendar 2020](https://qiita.com/advent-calendar/2020/kotlin)の5日目の記事です。
-Androidアプリ開発初心者ですが、空きがあったので勢いだけで参加してみました。(1日ぶり2回目)
+
+この記事は[Kotlin Advent Calendar 2020](https://qiita.com/advent-calendar/2020/kotlin)の 5 日目の記事です。
+Android アプリ開発初心者ですが、空きがあったので勢いだけで参加してみました。(1 日ぶり 2 回目)
 
 ## はじめに
-Androidに限らず色々なアプリを開発していて、ついつい忘れがちなボタン連打対策。。。
+
+Android に限らず色々なアプリを開発していて、ついつい忘れがちなボタン連打対策。。。
 処理の多重実行によってバグが発生することも多々あるため対処が必要です。
 
 いざ実装しようと調べて見ると、通常の連打対策の記事はよくありますが、
-DataBindingを利用しているプロジェクトで、簡単に導入できる方法が見つからなかったため、備忘録として記事にしようと思います。
+DataBinding を利用しているプロジェクトで、簡単に導入できる方法が見つからなかったため、備忘録として記事にしようと思います。
 
-## DataBindingを使った場合の通常のボタン押下処理
+## DataBinding を使った場合の通常のボタン押下処理
+
 `android:onClick`を利用してボタン押下時処理と紐付けを行います。
 
 ```xml:MainLayout.xml
@@ -34,11 +38,13 @@ DataBindingを利用しているプロジェクトで、簡単に導入できる
   </LinearLayout>
 </layout>
 ```
+
 ※ 実際は幅、高さなどの属性も指定しないとエラーになりますが、今回の説明に不要な部分は省略してあります。
 
 ## 連打対策済みボタン押下時処理
-Extensionを利用し全てのビューの基底クラスに
-OnClickListenerのセッターのラッパー(連打防止が処理入り)を定義し、
+
+Extension を利用し全てのビューの基底クラスに
+OnClickListener のセッターのラッパー(連打防止が処理入り)を定義し、
 カスタム属性と紐付けます。
 
 ```Kotlin:ViewExtension.kt
@@ -95,8 +101,10 @@ fun View.setOnSingleClickListener(listener: View.OnClickListener) {
 ```
 
 ## さいごに
+
 次からは初期段階から導入するように注意します....
-~~私の場合、気づいたときには、`android:onClick`が既に100箇所以上定義されていたので、少しの書き換えで済んで良かった。。。~~
+~~私の場合、気づいたときには、`android:onClick`が既に 100 箇所以上定義されていたので、少しの書き換えで済んで良かった。。。~~
 
 ## 参考記事
+
 - [ボタンの連打を防止する処理を共通化する - コジオニルク](https://kojion.com/posts/1057)

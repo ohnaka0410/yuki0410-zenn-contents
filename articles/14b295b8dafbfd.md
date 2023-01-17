@@ -4,6 +4,7 @@ emoji: "⏰"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["githubactions"]
 published: true
+publication_name: "no4_dev"
 ---
 
 ## `schedule` トリガーを用いた方法 👎
