@@ -56,13 +56,6 @@ https://coliss.com/articles/build-websites/operation/css/prevent-scroll-chaining
 
 https://www.npmjs.com/package/react-remove-scroll
 
-### render hooks パターン
-
-@uhyo さんの記事で知った手法です。
-カスタムフックで`Component`と`その状態を変更する関数`を返すことにより、状態変更時のロジックを隠蔽できるメリットがああります。
-
-https://engineering.linecorp.com/ja/blog/line-securities-frontend-3/
-
 ## 実装
 
 ### 1. Dialog を作る
@@ -75,14 +68,14 @@ import { useRef, useEffect } from "react";
 import classes from "./Dialog.module.css";
 
 type Props = {
-  isOpen: boolean;
+  isOpen?: boolean;
   children: React.ReactNode | React.ReactNodeArray;
 };
 
 export const Dialog: React.FC<Props> = ({
-  isOpen,
+  isOpen = false,
   children,
-}): React.ReactElement => {
+}:Props): React.ReactElement => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect((): void => {
@@ -157,13 +150,13 @@ export const Dialog: React.FC<Props> = ({
 import classes from "./Dialog.module.css";
 
 type Props = {
-  isOpen: boolean;
+  isOpen?: boolean;
   children: React.ReactNode | React.ReactNodeArray;
-+  onClose: VoidFunction;
++  onClose?: VoidFunction;
 };
 
 export const Dialog: React.FC<Props> = ({
-  isOpen,
+  isOpen = false,
   children,
 +  onClose,
 }): React.ReactElement | null => {
@@ -189,7 +182,7 @@ export const Dialog: React.FC<Props> = ({
 +
 +  const handleClickDialog = useCallback(
 +    (): void => {
-+      onClose();
++      onClose?.();
 +    },
 +    [onClose]
 +  );
@@ -327,9 +320,26 @@ export const Dialog: React.FC<Props> = ({
 
 ```
 
-### 2. Dialog を render hook でラップする
+ついでにエントリポイントも作っておきます。
+
+```ts:src/Dialog/index.ts
+export * from "./Dialog";
+
+```
+
+#### 2. Dialog を render hook でラップする
 
 特別なことは不要で、通常の render hooks を作ります。
+
+:::message
+
+render hooks パターンとは
+
+@uhyo さんの記事で知った手法です。
+カスタムフックで`Component`と`その状態を変更する関数`を返すことにより、状態変更時のロジックを隠蔽できるメリットがああります。
+
+https://engineering.linecorp.com/ja/blog/line-securities-frontend-3/
+:::
 
 ```ts:src/Dialog/useDialog.tsx
 import { useCallback, useState } from "react";
@@ -370,54 +380,77 @@ export const useDialog = (): Result => {
 
 ```
 
-ついでにエントリポイントも作っておきます。
+エントリポイント追記します。
 
-```ts:src/Dialog/index.ts
-export * from "./useDialog";
+```diff ts:src/Dialog/index.ts
+export * from "./Dialog";
++ export * from "./useDialog";
 
 ```
 
 以上で実装は完了です。
 
-## 利用方法
+### 利用方法
 
 利用する際は以下のように render hooks 経由で呼び出します。
 
 ```ts
-import { useDialog } from "./Dialog";
+import { useState } from "react";
+import { useDialog, Dialog } from "./Dialog";
 
 export const Demo:React.FC => ():React.ReactElement {
-  const { Dialog, open: openDialog, close: closeDialog } = useDialog();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const { Dialog: RenderDialog, open: openDialog, close: closeDialog } = useDialog();
 
   return (
-    <section>
-      <button type="button" onClick={openDialog}>
-        open dialog
-      </button>
-      <Dialog>
-        <header>
-          <h2>タイトル</h2>
-        </header>
-        <section>コンテンツ</section>
-        <footer>
-          <button type="button" onClick={closeDialog}>
-            close
-          </button>
-        </footer>
-      </Dialog>
-    </section>
+    <>
+      <section>
+        <button type="button" onClick={() => setOpen(true)}>
+          open dialog
+        </button>
+        <Dialog isOpen={open} onClose={() => setOpen(false)}>
+          <header>
+            <h2>タイトル</h2>
+          </header>
+          <section>コンテンツ</section>
+          <footer>
+            <button type="button" onClick={() => setOpen(false)}>
+              close
+            </button>
+          </footer>
+        </Dialog>
+      </section>
+
+      <section>
+        <button type="button" onClick={openDialog}>
+          open dialog
+        </button>
+        <RenderDialog>
+          <header>
+            <h2>タイトル</h2>
+          </header>
+          <section>コンテンツ</section>
+          <footer>
+            <button type="button" onClick={closeDialog}>
+              close
+            </button>
+          </footer>
+        </RenderDialog>
+      </section>
+    </>
   );
 }
 
 ```
 
-## 完成したもの
+### 完成したもの
 
 実際に動かせるサンプルは以下に置いてあります。
 
-https://codesandbox.io/s/qlh047?file=/src/Dialog/index.ts
+https://codesandbox.io/p/sandbox/react-dialog-xl7tmz?file=/src/Dialog/index.ts
 
-## TODO
+### TODO
 
 気が向いたときに追記したいと思っています。
 
