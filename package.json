@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/yuki0410-dev/yuki0410-zenn-contents#readme",
   "devDependencies": {
-    "zenn-cli": "^0.1.144"
+    "zenn-cli": "^0.1.153"
   }
 }
